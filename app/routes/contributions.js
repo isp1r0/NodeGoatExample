@@ -1,6 +1,19 @@
 var ContributionsDAO = require("../data/contributions-dao").ContributionsDAO;
 
 /* The ContributionsHandler must be constructed with a connected db */
+
+function getMyResults(req, res) {
+    var yr = req.params.yr ;    
+    var jsonQuery = {"year":yr} ;  //add or remove comma seperated "key":values given your JSON collection
+    var jsonProjection = {_id:0,"year":1,"quarter":1,"daily":1,"sms":1,"paid":1} ; //leave year out since that's specified in the query anyhow
+    var jsort = {"some-thing-else":-1} ; //-1 descending or 1 ascending
+    db.collection("YOUR-COLLECTION_NAME", function(err, collection) {
+        collection.find( jsonQuery, jsonProjection).sort(jsort).toArray( function(err, items) {
+            res.send(items);
+        });
+    });
+}
+
 function ContributionsHandler(db) {
     "use strict";
 
