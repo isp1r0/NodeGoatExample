@@ -84,7 +84,7 @@ MongoClient.connect(config.db, function(err, db) {
     // Application routes
     routes(app, db);
 
-    exports.getAllResults= function(req, res) {
+    module.exports.getAllResults= function(req, res) {
     var yr = req.params.yr ;    
     var jsonQuery = {"year":yr} ;  //add or remove comma seperated "key":values given your JSON collection
     var jsonProjection = {_id:0,"year":1,"quarter":1,"daily":1,"sms":1,"paid":1} ; //leave year out since that's specified in the query anyhow
