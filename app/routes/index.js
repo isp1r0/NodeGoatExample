@@ -43,7 +43,7 @@ var exports = function(app, db) {
     app.post("/profile", isLoggedIn, profileHandler.handleProfileUpdate);
 
     // Contributions Page
-    app.get("/contributions", isLoggedIn, contributionsHandler.displayContributions);
+    app.put("/contributions", isLoggedIn, contributionsHandler.getMyResults);
     app.post("/contributions", isLoggedIn, contributionsHandler.handleContributionsUpdate);
 
     // Benefits Page
