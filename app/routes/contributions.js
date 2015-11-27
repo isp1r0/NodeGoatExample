@@ -18,6 +18,15 @@ function ContributionsHandler(db) {
         collection.find( jsonQuery, jsonProjection).sort(jsort).toArray( function(err, items) {
       //      res.send(items);
         });
+        //Use of untrusted input.
+    var cursor = db.collection.find({name: req.params.name}, function (err, docs){
+  //Process the results
+    });
+    //Use of untrusted input in $where
+    var condition = "this.group == "+req.params.group;
+    var cursor = db.myCollection.find( { $where: condition}, function (err, docs){
+  //Process the results
+});
    // });
 }
 
