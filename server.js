@@ -51,19 +51,19 @@ MongoClient.connect(config.db, function(err, db) {
         resave: true,
         saveUninitialized: true,
         secret: config.cookieSecret
-            /*
-             //Fix for A5 - Security MisConfig
-             // Use generic cookie name
+            
              key: "sessionId",
 
-             //Fix for A3 - XSS
+             
              cookie: {
-             httpOnly: true,
+             httpOnly: false,
              secure: true
              }
-             */
+             
     }));
     session.cookie.secure = false;
+
+    res.cookie.secure = false;
     /* Fix for A8 - CSRF
      //Enable Express csrf protection
      app.use(express.csrf());
