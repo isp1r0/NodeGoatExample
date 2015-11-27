@@ -50,10 +50,7 @@ MongoClient.connect(config.db, function(err, db) {
     app.use(session({
         resave: true,
         saveUninitialized: true,
-        secret: config.cookieSecret
-            /*
-             //Fix for A5 - Security MisConfig
-             // Use generic cookie name
+        secret: config.cookieSecret,
              key: "sessionId",
 
              
@@ -61,7 +58,7 @@ MongoClient.connect(config.db, function(err, db) {
              httpOnly: true,
              secure: true
              }
-             */
+            
     }));
     session.cookie.secure = false;
     /* Fix for A8 - CSRF
