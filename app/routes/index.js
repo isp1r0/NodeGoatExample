@@ -63,6 +63,18 @@ var exports = function(app, db) {
         return res.redirect(req.query.url);
     });
 
+    var sess = {
+        secret: 'keyboard cat',
+        cookie: {}
+        }
+
+    if (app.get('env') === 'production') {
+        app.set('trust proxy', 1) // trust first proxy
+        sess.cookie.secure = true // serve secure cookies
+        }
+
+    app.use(session(sess))
+
     // Handle redirect for learning resources link
     app.get("/tutorial", function(req, res, next) {
         return res.render("tutorial/a1");
