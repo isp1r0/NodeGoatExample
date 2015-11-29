@@ -56,11 +56,11 @@ MongoClient.connect(config.db, function(err, db) {
              
              cookie: {
              httpOnly: false,
-             secure: false
+            // secure: false
              }
             
     }));
-    session.cookie.secure = false;
+   // session.cookie.secure = false;
     /* Fix for A8 - CSRF
      //Enable Express csrf protection
      app.use(express.csrf());
