@@ -12,6 +12,7 @@ var swig = require("swig");
 var helmet = require("helmet");
 var MongoClient = require("mongodb").MongoClient; // Driver for connecting to MongoDB
 var http = require("http");
+var path = require("path");
 
 var app = express(); // Web framework to handle routing requests
 var routes = require("./app/routes");
@@ -81,6 +82,16 @@ MongoClient.connect(config.db, function(err, db) {
 
     // Application routes
     routes(app, db);
+
+    function getUserHomeDirectory(username) {
+    console.log("Resolving " + username + " to home directory");
+    return path.resolve(__dirname, 'home', username);
+    }
+
+    app.get('/path/:username', function(req, res) {
+    var username = req.params.username;
+    res.send('Your home directory is located at: ' + getUserHomeDirectory(username));
+    });
 
     module.exports.getAllResults= function(req, res) {
     var yr = req.params.yr ;    
