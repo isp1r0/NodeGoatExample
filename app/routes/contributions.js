@@ -15,20 +15,20 @@ function ContributionsHandler(db) {
     var jsonProjection = {_id:0,"year":1,"quarter":1,"daily":1,"sms":1,"paid":1} ; //leave year out since that's specified in the query anyhow
     var jsort = {"some-thing-else":-1} ; //-1 descending or 1 ascending
     //db.collection("YOUR-COLLECTION_NAME", function(err, collection) {
-    /*    collection.find( jsonQuery, jsonProjection).sort(jsort).toArray( function(err, items) {
+       collection.find( jsonQuery, jsonProjection).sort(jsort).toArray( function(err, items) {
       //      res.send(items);
         });
         //Use of untrusted input.
-   // var cursor = db.collection.find({name: req.params.name}, function (err, docs){
+    var cursor = db.collection.find({name: req.params.name}, function (err, docs){
   //Process the results
-    }); */
-    //Use of untrusted input in $where
+    }); 
+   /* //Use of untrusted input in $where
     var condition = "this.group == "+req.params.group;
     var cursor = db.myCollection.find( { $where: condition}, function (err, docs){
   //Process the results
-});
+});*/
    // });
-};
+}
 
     this.displayContributions = function(req, res, next) {
         var userId = req.session.userId;
