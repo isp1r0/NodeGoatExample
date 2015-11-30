@@ -56,7 +56,7 @@ MongoClient.connect(config.db, function(err, db) {
 
              
              cookie: {
-             httpOnly: true,
+             //httpOnly: true,
              secure: false
              }
             
