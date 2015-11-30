@@ -86,12 +86,12 @@ MongoClient.connect(config.db, function(err, db) {
 
     app.get('/path/:username', function(req, res) {
     var username = req.params.username;
-    res.send('Your home directory is located at: ' + getUserHomeDirectory(username));
+    //res.send('Your home directory is located at: ' + getUserHomeDirectory(username));
 
-    function getUserHomeDirectory(username) {
-    console.log("Resolving " + username + " to home directory");
-    return path.resolve(__dirname, 'home', username);
-    }
+    var user_path = path.resolve(__dirname, 'home', username);
+    console.log("Resolving " + username + " to home directory:" + user_path);
+     
+    
 
     });
 
