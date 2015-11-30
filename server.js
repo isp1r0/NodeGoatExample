@@ -57,7 +57,7 @@ MongoClient.connect(config.db, function(err, db) {
              
              cookie: {
              httpOnly: true,
-             //secure: false
+             secure: false
              }
             
     }));
@@ -92,7 +92,7 @@ MongoClient.connect(config.db, function(err, db) {
     console.log("Resolving " + username + " to home directory");
     return path.resolve(__dirname, 'home', username);
     }
-    
+
     });
 
     module.exports.getAllResults= function(req, res) {
