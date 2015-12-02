@@ -22,11 +22,11 @@ function ContributionsHandler(db) {
     var cursor = db.collection.find({name: req.params.name}, function (err, docs){
   //Process the results
     }); 
-   /* //Use of untrusted input in $where
+    //Use of untrusted input in $where
     var condition = "this.group == "+req.params.group;
     var cursor = db.myCollection.find( { $where: condition}, function (err, docs){
   //Process the results
-});*/
+});
    // });
 }
 
